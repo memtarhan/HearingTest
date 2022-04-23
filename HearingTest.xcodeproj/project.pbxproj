@@ -28,6 +28,10 @@
 		43E4B42E2814AE7A00360950 /* PreparationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B42C2814AE7A00360950 /* PreparationViewController.swift */; };
 		43E4B42F2814AE7A00360950 /* PreparationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E4B42D2814AE7A00360950 /* PreparationViewController.xib */; };
 		43E4B4312814AE9200360950 /* PreparationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4302814AE9200360950 /* PreparationAssembly.swift */; };
+		43E4B4352814B53400360950 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4342814B53400360950 /* UIColor+.swift */; };
+		43E4B4392814B77300360950 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4372814B77300360950 /* SplashViewController.swift */; };
+		43E4B43A2814B77300360950 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E4B4382814B77300360950 /* SplashViewController.xib */; };
+		43E4B43C2814B84700360950 /* SplashAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B43B2814B84700360950 /* SplashAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		43E4B42C2814AE7A00360950 /* PreparationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationViewController.swift; sourceTree = "<group>"; };
 		43E4B42D2814AE7A00360950 /* PreparationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreparationViewController.xib; sourceTree = "<group>"; };
 		43E4B4302814AE9200360950 /* PreparationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationAssembly.swift; sourceTree = "<group>"; };
+		43E4B4342814B53400360950 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		43E4B4372814B77300360950 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		43E4B4382814B77300360950 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		43E4B43B2814B84700360950 /* SplashAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +174,7 @@
 			children = (
 				43E4B4122814AA2900360950 /* Preparation */,
 				43E4B4142814AA4900360950 /* Result */,
+				43E4B4362814B76600360950 /* Splash */,
 				43E4B4132814AA4000360950 /* Test */,
 			);
 			path = Scenes;
@@ -205,6 +214,7 @@
 			children = (
 				43E4B4302814AE9200360950 /* PreparationAssembly.swift */,
 				43E4B4162814AACD00360950 /* ResultAssembly.swift */,
+				43E4B43B2814B84700360950 /* SplashAssembly.swift */,
 				43E4B42A2814AD8B00360950 /* TestAssembly.swift */,
 			);
 			path = Scenes;
@@ -214,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				43E4B41D2814AB6F00360950 /* ViewControllerFactory.swift */,
+				43E4B4342814B53400360950 /* UIColor+.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -224,6 +235,15 @@
 				43E4B4202814ABB000360950 /* ViewControllerFactoryAssembly.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		43E4B4362814B76600360950 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B4372814B77300360950 /* SplashViewController.swift */,
+				43E4B4382814B77300360950 /* SplashViewController.xib */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E4B42F2814AE7A00360950 /* PreparationViewController.xib in Resources */,
+				43E4B43A2814B77300360950 /* SplashViewController.xib in Resources */,
 				434F842B2814A98800658027 /* LaunchScreen.storyboard in Resources */,
 				43E4B4252814ACF200360950 /* TestViewController.xib in Resources */,
 				434F84282814A98800658027 /* Assets.xcassets in Resources */,
@@ -370,6 +391,7 @@
 				43E4B4272814AD1B00360950 /* TestViewModel.swift in Sources */,
 				43E4B4212814ABB000360950 /* ViewControllerFactoryAssembly.swift in Sources */,
 				434F841F2814A98300658027 /* AppDelegate.swift in Sources */,
+				43E4B4392814B77300360950 /* SplashViewController.swift in Sources */,
 				43E4B42E2814AE7A00360950 /* PreparationViewController.swift in Sources */,
 				43E4B41E2814AB6F00360950 /* ViewControllerFactory.swift in Sources */,
 				43E4B4292814AD2200360950 /* TestModel.swift in Sources */,
@@ -377,6 +399,8 @@
 				43E4B4312814AE9200360950 /* PreparationAssembly.swift in Sources */,
 				43E4B42B2814AD8B00360950 /* TestAssembly.swift in Sources */,
 				434F84212814A98300658027 /* SceneDelegate.swift in Sources */,
+				43E4B43C2814B84700360950 /* SplashAssembly.swift in Sources */,
+				43E4B4352814B53400360950 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +577,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -562,7 +587,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -581,6 +606,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -590,7 +616,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

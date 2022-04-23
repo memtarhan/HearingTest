@@ -15,6 +15,9 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.trigger()
     }
+    
+    @IBAction func didTapContinue(_ sender: UIButton) {
+    }
+    
 }

@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             /// - Scenes
             PreparationAssembly(),
             ResultAssembly(),
+            SplashAssembly(),
             TestAssembly(),
 
         ])
@@ -51,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// - Initializing UI w/ initial view controller
     func initUI() {
-        let initialViewController = assembler?.resolver.resolve(TestViewController.self)!
+        let initialViewController = assembler?.resolver.resolve(SplashViewController.self)!
         rootViewController = initialViewController
     }
 }
