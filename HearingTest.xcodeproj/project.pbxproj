@@ -9,13 +9,25 @@
 /* Begin PBXBuildFile section */
 		434F841F2814A98300658027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F841E2814A98300658027 /* AppDelegate.swift */; };
 		434F84212814A98300658027 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F84202814A98300658027 /* SceneDelegate.swift */; };
-		434F84232814A98300658027 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F84222814A98300658027 /* ViewController.swift */; };
-		434F84262814A98300658027 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434F84242814A98300658027 /* Main.storyboard */; };
 		434F84282814A98800658027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434F84272814A98800658027 /* Assets.xcassets */; };
 		434F842B2814A98800658027 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434F84292814A98800658027 /* LaunchScreen.storyboard */; };
 		434F84362814A98900658027 /* HearingTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F84352814A98900658027 /* HearingTestTests.swift */; };
 		434F84402814A98900658027 /* HearingTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F843F2814A98900658027 /* HearingTestUITests.swift */; };
 		434F84422814A98900658027 /* HearingTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F84412814A98900658027 /* HearingTestUITestsLaunchTests.swift */; };
+		43E4B40F2814A9F800360950 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 43E4B40E2814A9F800360950 /* Swinject */; };
+		43E4B4172814AACD00360950 /* ResultAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4162814AACD00360950 /* ResultAssembly.swift */; };
+		43E4B41A2814AAF800360950 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4182814AAF800360950 /* ResultViewController.swift */; };
+		43E4B41B2814AAF800360950 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E4B4192814AAF800360950 /* ResultViewController.xib */; };
+		43E4B41E2814AB6F00360950 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B41D2814AB6F00360950 /* ViewControllerFactory.swift */; };
+		43E4B4212814ABB000360950 /* ViewControllerFactoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4202814ABB000360950 /* ViewControllerFactoryAssembly.swift */; };
+		43E4B4242814ACF200360950 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4222814ACF200360950 /* TestViewController.swift */; };
+		43E4B4252814ACF200360950 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E4B4232814ACF200360950 /* TestViewController.xib */; };
+		43E4B4272814AD1B00360950 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4262814AD1B00360950 /* TestViewModel.swift */; };
+		43E4B4292814AD2200360950 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4282814AD2200360950 /* TestModel.swift */; };
+		43E4B42B2814AD8B00360950 /* TestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B42A2814AD8B00360950 /* TestAssembly.swift */; };
+		43E4B42E2814AE7A00360950 /* PreparationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B42C2814AE7A00360950 /* PreparationViewController.swift */; };
+		43E4B42F2814AE7A00360950 /* PreparationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E4B42D2814AE7A00360950 /* PreparationViewController.xib */; };
+		43E4B4312814AE9200360950 /* PreparationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4302814AE9200360950 /* PreparationAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +51,6 @@
 		434F841B2814A98300658027 /* HearingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434F841E2814A98300658027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434F84202814A98300658027 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		434F84222814A98300658027 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		434F84252814A98300658027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		434F84272814A98800658027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		434F842A2814A98800658027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		434F842C2814A98800658027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +59,19 @@
 		434F843B2814A98900658027 /* HearingTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HearingTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		434F843F2814A98900658027 /* HearingTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestUITests.swift; sourceTree = "<group>"; };
 		434F84412814A98900658027 /* HearingTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		43E4B4162814AACD00360950 /* ResultAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAssembly.swift; sourceTree = "<group>"; };
+		43E4B4182814AAF800360950 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		43E4B4192814AAF800360950 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
+		43E4B41D2814AB6F00360950 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		43E4B4202814ABB000360950 /* ViewControllerFactoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactoryAssembly.swift; sourceTree = "<group>"; };
+		43E4B4222814ACF200360950 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		43E4B4232814ACF200360950 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
+		43E4B4262814AD1B00360950 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
+		43E4B4282814AD2200360950 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		43E4B42A2814AD8B00360950 /* TestAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssembly.swift; sourceTree = "<group>"; };
+		43E4B42C2814AE7A00360950 /* PreparationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationViewController.swift; sourceTree = "<group>"; };
+		43E4B42D2814AE7A00360950 /* PreparationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreparationViewController.xib; sourceTree = "<group>"; };
+		43E4B4302814AE9200360950 /* PreparationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E4B40F2814A9F800360950 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +123,11 @@
 		434F841D2814A98300658027 /* HearingTest */ = {
 			isa = PBXGroup;
 			children = (
+				43E4B4102814AA1800360950 /* DI */,
+				43E4B4112814AA1E00360950 /* Scenes */,
+				43E4B41C2814AB5E00360950 /* Common */,
 				434F841E2814A98300658027 /* AppDelegate.swift */,
 				434F84202814A98300658027 /* SceneDelegate.swift */,
-				434F84222814A98300658027 /* ViewController.swift */,
-				434F84242814A98300658027 /* Main.storyboard */,
 				434F84272814A98800658027 /* Assets.xcassets */,
 				434F84292814A98800658027 /* LaunchScreen.storyboard */,
 				434F842C2814A98800658027 /* Info.plist */,
@@ -127,6 +152,80 @@
 			path = HearingTestUITests;
 			sourceTree = "<group>";
 		};
+		43E4B4102814AA1800360950 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B41F2814ABA800360950 /* Common */,
+				43E4B4152814AABC00360950 /* Scenes */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		43E4B4112814AA1E00360950 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B4122814AA2900360950 /* Preparation */,
+				43E4B4142814AA4900360950 /* Result */,
+				43E4B4132814AA4000360950 /* Test */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		43E4B4122814AA2900360950 /* Preparation */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B42C2814AE7A00360950 /* PreparationViewController.swift */,
+				43E4B42D2814AE7A00360950 /* PreparationViewController.xib */,
+			);
+			path = Preparation;
+			sourceTree = "<group>";
+		};
+		43E4B4132814AA4000360950 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B4222814ACF200360950 /* TestViewController.swift */,
+				43E4B4232814ACF200360950 /* TestViewController.xib */,
+				43E4B4262814AD1B00360950 /* TestViewModel.swift */,
+				43E4B4282814AD2200360950 /* TestModel.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		43E4B4142814AA4900360950 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B4182814AAF800360950 /* ResultViewController.swift */,
+				43E4B4192814AAF800360950 /* ResultViewController.xib */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		43E4B4152814AABC00360950 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B4302814AE9200360950 /* PreparationAssembly.swift */,
+				43E4B4162814AACD00360950 /* ResultAssembly.swift */,
+				43E4B42A2814AD8B00360950 /* TestAssembly.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		43E4B41C2814AB5E00360950 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B41D2814AB6F00360950 /* ViewControllerFactory.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		43E4B41F2814ABA800360950 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B4202814ABB000360950 /* ViewControllerFactoryAssembly.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +242,9 @@
 			dependencies = (
 			);
 			name = HearingTest;
+			packageProductDependencies = (
+				43E4B40E2814A9F800360950 /* Swinject */,
+			);
 			productName = HearingTest;
 			productReference = 434F841B2814A98300658027 /* HearingTest.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +317,9 @@
 				Base,
 			);
 			mainGroup = 434F84122814A98300658027;
+			packageReferences = (
+				43E4B40D2814A9F800360950 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = 434F841C2814A98300658027 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,9 +336,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E4B42F2814AE7A00360950 /* PreparationViewController.xib in Resources */,
 				434F842B2814A98800658027 /* LaunchScreen.storyboard in Resources */,
+				43E4B4252814ACF200360950 /* TestViewController.xib in Resources */,
 				434F84282814A98800658027 /* Assets.xcassets in Resources */,
-				434F84262814A98300658027 /* Main.storyboard in Resources */,
+				43E4B41B2814AAF800360950 /* ResultViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +365,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				434F84232814A98300658027 /* ViewController.swift in Sources */,
+				43E4B41A2814AAF800360950 /* ResultViewController.swift in Sources */,
+				43E4B4242814ACF200360950 /* TestViewController.swift in Sources */,
+				43E4B4272814AD1B00360950 /* TestViewModel.swift in Sources */,
+				43E4B4212814ABB000360950 /* ViewControllerFactoryAssembly.swift in Sources */,
 				434F841F2814A98300658027 /* AppDelegate.swift in Sources */,
+				43E4B42E2814AE7A00360950 /* PreparationViewController.swift in Sources */,
+				43E4B41E2814AB6F00360950 /* ViewControllerFactory.swift in Sources */,
+				43E4B4292814AD2200360950 /* TestModel.swift in Sources */,
+				43E4B4172814AACD00360950 /* ResultAssembly.swift in Sources */,
+				43E4B4312814AE9200360950 /* PreparationAssembly.swift in Sources */,
+				43E4B42B2814AD8B00360950 /* TestAssembly.swift in Sources */,
 				434F84212814A98300658027 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +413,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		434F84242814A98300658027 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				434F84252814A98300658027 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		434F84292814A98800658027 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +550,7 @@
 				INFOPLIST_FILE = HearingTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +578,7 @@
 				INFOPLIST_FILE = HearingTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -602,6 +710,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		43E4B40D2814A9F800360950 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		43E4B40E2814A9F800360950 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43E4B40D2814A9F800360950 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 434F84132814A98300658027 /* Project object */;
 }
