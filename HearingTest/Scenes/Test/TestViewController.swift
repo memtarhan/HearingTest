@@ -20,9 +20,10 @@ class TestViewController: UIViewController {
     private var snapshot = NSDiffableDataSourceSnapshot<FrequencySection, Test.Frequency>()
     private lazy var dataSource = generatedDataSource
 
-    private let models = [Test.Frequency(fileName: "1", heard: false, playing: false),
-                          Test.Frequency(fileName: "2", heard: false, playing: false),
-                          Test.Frequency(fileName: "3", heard: false, playing: false)]
+    private let models = [Test.Frequency(title: "Frequency 1", file: Test.Frequency.File(name: "50Hz", ext: "wav"), heard: false, playing: false),
+                          Test.Frequency(title: "Frequency 2", file: Test.Frequency.File(name: "125Hz", ext: "wav"), heard: false, playing: false),
+                          Test.Frequency(title: "Frequency 3", file: Test.Frequency.File(name: "250Hz", ext: "wav"), heard: false, playing: false),
+                          Test.Frequency(title: "Frequency 4", file: Test.Frequency.File(name: "500Hz", ext: "wav"), heard: false, playing: false)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,7 @@ class TestViewController: UIViewController {
         // TODO: - Optimize this logic
         // Stop playing current audio
         var playingIndex: Int?
-        
+
         if let index = models.firstIndex(where: { $0.playing }) {
             models[index].playing = false
 //            if index == sender.tag { models[sender.tag].playing = false }
@@ -60,7 +61,7 @@ class TestViewController: UIViewController {
         // Play new one
         if playingIndex == sender.tag {
             models[sender.tag].playing = !models[sender.tag].playing
-        
+
         } else {
             models[sender.tag].playing = true
         }

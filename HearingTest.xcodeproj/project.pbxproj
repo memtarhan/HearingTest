@@ -14,6 +14,11 @@
 		434F84362814A98900658027 /* HearingTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F84352814A98900658027 /* HearingTestTests.swift */; };
 		434F84402814A98900658027 /* HearingTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F843F2814A98900658027 /* HearingTestUITests.swift */; };
 		434F84422814A98900658027 /* HearingTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F84412814A98900658027 /* HearingTestUITestsLaunchTests.swift */; };
+		436E539A2815FEB30070FD66 /* 50Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 436E53962815FEB30070FD66 /* 50Hz.wav */; };
+		436E539B2815FEB30070FD66 /* 250Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 436E53972815FEB30070FD66 /* 250Hz.wav */; };
+		436E539C2815FEB30070FD66 /* 500Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 436E53982815FEB30070FD66 /* 500Hz.wav */; };
+		436E539D2815FEB30070FD66 /* 125Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 436E53992815FEB30070FD66 /* 125Hz.wav */; };
+		436E539F2815FF9E0070FD66 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E539E2815FF9E0070FD66 /* UIView+.swift */; };
 		43E4B40F2814A9F800360950 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 43E4B40E2814A9F800360950 /* Swinject */; };
 		43E4B4172814AACD00360950 /* ResultAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4162814AACD00360950 /* ResultAssembly.swift */; };
 		43E4B41A2814AAF800360950 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4182814AAF800360950 /* ResultViewController.swift */; };
@@ -65,6 +70,11 @@
 		434F843B2814A98900658027 /* HearingTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HearingTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		434F843F2814A98900658027 /* HearingTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestUITests.swift; sourceTree = "<group>"; };
 		434F84412814A98900658027 /* HearingTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		436E53962815FEB30070FD66 /* 50Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 50Hz.wav; sourceTree = "<group>"; };
+		436E53972815FEB30070FD66 /* 250Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 250Hz.wav; sourceTree = "<group>"; };
+		436E53982815FEB30070FD66 /* 500Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 500Hz.wav; sourceTree = "<group>"; };
+		436E53992815FEB30070FD66 /* 125Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 125Hz.wav; sourceTree = "<group>"; };
+		436E539E2815FF9E0070FD66 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		43E4B4162814AACD00360950 /* ResultAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAssembly.swift; sourceTree = "<group>"; };
 		43E4B4182814AAF800360950 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		43E4B4192814AAF800360950 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -116,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				434F841D2814A98300658027 /* HearingTest */,
+				436E53952815FE860070FD66 /* Resources */,
 				434F84342814A98900658027 /* HearingTestTests */,
 				434F843E2814A98900658027 /* HearingTestUITests */,
 				434F841C2814A98300658027 /* Products */,
@@ -162,6 +173,17 @@
 				434F84412814A98900658027 /* HearingTestUITestsLaunchTests.swift */,
 			);
 			path = HearingTestUITests;
+			sourceTree = "<group>";
+		};
+		436E53952815FE860070FD66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				436E53962815FEB30070FD66 /* 50Hz.wav */,
+				436E53992815FEB30070FD66 /* 125Hz.wav */,
+				436E53972815FEB30070FD66 /* 250Hz.wav */,
+				436E53982815FEB30070FD66 /* 500Hz.wav */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		43E4B4102814AA1800360950 /* DI */ = {
@@ -228,8 +250,9 @@
 		43E4B41C2814AB5E00360950 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				43E4B41D2814AB6F00360950 /* ViewControllerFactory.swift */,
 				43E4B4342814B53400360950 /* UIColor+.swift */,
+				436E539E2815FF9E0070FD66 /* UIView+.swift */,
+				43E4B41D2814AB6F00360950 /* ViewControllerFactory.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -372,8 +395,12 @@
 			files = (
 				43E4B42F2814AE7A00360950 /* PreparationViewController.xib in Resources */,
 				43E4B4412814D88100360950 /* FrequencyTableViewCell.xib in Resources */,
+				436E539D2815FEB30070FD66 /* 125Hz.wav in Resources */,
 				43E4B43A2814B77300360950 /* SplashViewController.xib in Resources */,
+				436E539A2815FEB30070FD66 /* 50Hz.wav in Resources */,
+				436E539B2815FEB30070FD66 /* 250Hz.wav in Resources */,
 				434F842B2814A98800658027 /* LaunchScreen.storyboard in Resources */,
+				436E539C2815FEB30070FD66 /* 500Hz.wav in Resources */,
 				43E4B4252814ACF200360950 /* TestViewController.xib in Resources */,
 				434F84282814A98800658027 /* Assets.xcassets in Resources */,
 				43E4B41B2814AAF800360950 /* ResultViewController.xib in Resources */,
@@ -410,6 +437,7 @@
 				43E4B42E2814AE7A00360950 /* PreparationViewController.swift in Sources */,
 				43E4B41E2814AB6F00360950 /* ViewControllerFactory.swift in Sources */,
 				43E4B4292814AD2200360950 /* TestModel.swift in Sources */,
+				436E539F2815FF9E0070FD66 /* UIView+.swift in Sources */,
 				43E4B4172814AACD00360950 /* ResultAssembly.swift in Sources */,
 				43E4B4312814AE9200360950 /* PreparationAssembly.swift in Sources */,
 				43E4B42B2814AD8B00360950 /* TestAssembly.swift in Sources */,

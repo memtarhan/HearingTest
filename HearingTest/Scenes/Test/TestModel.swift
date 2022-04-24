@@ -9,14 +9,25 @@ import Foundation
 
 struct Test {
     class Frequency {
-        let fileName: String
+        let title: String
+        let file: File
         var heard: Bool
         var playing: Bool
-        
-        init(fileName: String, heard: Bool, playing: Bool) {
-            self.fileName = fileName
+
+        init(title: String, file: File, heard: Bool, playing: Bool) {
+            self.title = title
+            self.file = file
             self.heard = heard
             self.playing = playing
+        }
+
+        struct File: Hashable, Equatable {
+            let name: String
+            let ext: String
+
+            static func == (lhs: File, rhs: File) -> Bool {
+                return (lhs.name == rhs.name) && (lhs.ext == lhs.ext)
+            }
         }
     }
 }
@@ -24,10 +35,10 @@ struct Test {
 /// - to confirm UITableViewDiffableDataSource
 extension Test.Frequency: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(fileName)
+        hasher.combine(file)
     }
 
     static func == (lhs: Test.Frequency, rhs: Test.Frequency) -> Bool {
-        return lhs.fileName == rhs.fileName
+        return lhs.file == rhs.file
     }
 }
