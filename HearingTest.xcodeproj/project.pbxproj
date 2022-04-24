@@ -32,6 +32,8 @@
 		43E4B4392814B77300360950 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4372814B77300360950 /* SplashViewController.swift */; };
 		43E4B43A2814B77300360950 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E4B4382814B77300360950 /* SplashViewController.xib */; };
 		43E4B43C2814B84700360950 /* SplashAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B43B2814B84700360950 /* SplashAssembly.swift */; };
+		43E4B4402814D88100360950 /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B43E2814D88100360950 /* FrequencyTableViewCell.swift */; };
+		43E4B4412814D88100360950 /* FrequencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E4B43F2814D88100360950 /* FrequencyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		43E4B4372814B77300360950 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		43E4B4382814B77300360950 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		43E4B43B2814B84700360950 /* SplashAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAssembly.swift; sourceTree = "<group>"; };
+		43E4B43E2814D88100360950 /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
+		43E4B43F2814D88100360950 /* FrequencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,7 @@
 		43E4B4132814AA4000360950 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				43E4B43D2814D84F00360950 /* Cell */,
 				43E4B4222814ACF200360950 /* TestViewController.swift */,
 				43E4B4232814ACF200360950 /* TestViewController.xib */,
 				43E4B4262814AD1B00360950 /* TestViewModel.swift */,
@@ -244,6 +249,15 @@
 				43E4B4382814B77300360950 /* SplashViewController.xib */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		43E4B43D2814D84F00360950 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				43E4B43E2814D88100360950 /* FrequencyTableViewCell.swift */,
+				43E4B43F2814D88100360950 /* FrequencyTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E4B42F2814AE7A00360950 /* PreparationViewController.xib in Resources */,
+				43E4B4412814D88100360950 /* FrequencyTableViewCell.xib in Resources */,
 				43E4B43A2814B77300360950 /* SplashViewController.xib in Resources */,
 				434F842B2814A98800658027 /* LaunchScreen.storyboard in Resources */,
 				43E4B4252814ACF200360950 /* TestViewController.xib in Resources */,
@@ -398,6 +413,7 @@
 				43E4B4172814AACD00360950 /* ResultAssembly.swift in Sources */,
 				43E4B4312814AE9200360950 /* PreparationAssembly.swift in Sources */,
 				43E4B42B2814AD8B00360950 /* TestAssembly.swift in Sources */,
+				43E4B4402814D88100360950 /* FrequencyTableViewCell.swift in Sources */,
 				434F84212814A98300658027 /* SceneDelegate.swift in Sources */,
 				43E4B43C2814B84700360950 /* SplashAssembly.swift in Sources */,
 				43E4B4352814B53400360950 /* UIColor+.swift in Sources */,
