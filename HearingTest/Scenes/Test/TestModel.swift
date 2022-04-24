@@ -13,12 +13,14 @@ struct Test {
         let file: File
         var heard: Bool
         var playing: Bool
+        let tag: Int
 
-        init(title: String, file: File, heard: Bool, playing: Bool) {
+        init(title: String, file: File, heard: Bool, playing: Bool, tag: Int) {
             self.title = title
             self.file = file
             self.heard = heard
             self.playing = playing
+            self.tag = tag
         }
 
         struct File: Hashable, Equatable {

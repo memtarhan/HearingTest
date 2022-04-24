@@ -22,6 +22,10 @@ class FrequencyTableViewCell: UITableViewCell {
 
     private var player: AVAudioPlayer?
 
+    var delegate: FrequencyTableViewCellDelegate?
+
+    private var model: Test.Frequency?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -34,7 +38,16 @@ class FrequencyTableViewCell: UITableViewCell {
         }
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        player?.delegate = nil
+        player = nil
+    }
+
     func configure(_ model: Test.Frequency) {
+        self.model = model
+
         playPauseButton.setImage(getPlayPauseButtonImage(for: model.playing), for: .normal)
         hearButton.setImage(getHearButtonImage(for: model.heard), for: .normal)
         titleLabel.text = model.title
@@ -61,11 +74,24 @@ class FrequencyTableViewCell: UITableViewCell {
             do {
                 player = try AVAudioPlayer(contentsOf: audioFileUrl, fileTypeHint: nil)
                 player?.numberOfLoops = 0
+                player?.delegate = self
             } catch {
                 print("AVAudioPlayer error = \(error)")
             }
         }
     }
+}
+
+extension FrequencyTableViewCell: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if let model = self.model {
+            delegate?.frequencyDidFinishPlaying(model: model)
+        }
+    }
+}
+
+protocol FrequencyTableViewCellDelegate {
+    func frequencyDidFinishPlaying(model: Test.Frequency)
 }
 
 enum FrequencySection: CaseIterable {
