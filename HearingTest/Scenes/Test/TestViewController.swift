@@ -56,13 +56,17 @@ class TestViewController: UIViewController {
         snapshot.appendSections([.frequency])
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         models = viewModel.models
 
         snapshot.appendItems(models, toSection: .frequency)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         checkIfHeadphoneConnected()
     }
@@ -106,17 +110,13 @@ class TestViewController: UIViewController {
     private func updatePlayingStatus(for tag: Int) {
         let models = snapshot.itemIdentifiers
 
-        var playingIndex: Int?
+        let playingItemIndex: Int? = models.firstIndex(where: { $0.playing })
 
-        if let index = models.firstIndex(where: { $0.playing }) {
-            playingIndex = index
-        }
-
-        if playingIndex == tag {
+        if playingItemIndex == tag {
             models[tag].playing = !models[tag].playing
 
         } else {
-            if let index = playingIndex {
+            if let index = playingItemIndex {
                 models[index].playing = false
             }
             models[tag].playing = true
