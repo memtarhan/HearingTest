@@ -16,6 +16,7 @@ class TestViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     private let rowHeight: CGFloat = 96
 
@@ -44,6 +45,8 @@ class TestViewController: UIViewController {
         }
     }
 
+    private var cancellables: Set<AnyCancellable> = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,10 +62,15 @@ class TestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        models = viewModel.models
-
-        snapshot.appendItems(models, toSection: .frequency)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        viewModel.models.sink { [weak self] models in
+            if let self = self {
+                self.models = models
+                self.snapshot.appendItems(self.models, toSection: .frequency)
+                self.dataSource.apply(self.snapshot, animatingDifferences: true)
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        .store(in: &cancellables)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -134,13 +142,24 @@ class TestViewController: UIViewController {
     }
 
     func checkIfHeadphoneConnected() {
+        if !bluetoothOrHeadphonesConnected {
+            navigateToHeadphoneDisconnected()
+        }
+    }
+
+    var bluetoothOrHeadphonesConnected: Bool {
         let outputs = AVAudioSession.sharedInstance().currentRoute.outputs
 
         for output in outputs {
-            if output.portType != AVAudioSession.Port.headphones {
-                navigateToHeadphoneDisconnected()
+            if output.portType == AVAudioSession.Port.bluetoothA2DP ||
+                output.portType == AVAudioSession.Port.bluetoothHFP ||
+                output.portType == AVAudioSession.Port.bluetoothLE ||
+                output.portType == AVAudioSession.Port.headphones {
+                return true
             }
         }
+
+        return false
     }
 }
 

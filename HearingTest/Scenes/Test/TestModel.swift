@@ -31,6 +31,8 @@ struct Test {
                 return (lhs.name == rhs.name) && (lhs.ext == lhs.ext)
             }
         }
+
+        static let sample = Test.Frequency(title: "Sample", file: Test.Frequency.File(name: "", ext: ""), heard: false, playing: false, tag: -1)
     }
 }
 
