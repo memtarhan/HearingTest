@@ -9,6 +9,7 @@ import AVFoundation
 import Combine
 import UIKit
 
+// TODO: This view controller also can be a subclass of BaseViewController
 class StatusViewController: UIViewController {
     @IBOutlet var imageContainerView: UIView!
 

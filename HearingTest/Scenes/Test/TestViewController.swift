@@ -9,9 +9,8 @@ import AVFoundation
 import Combine
 import UIKit
 
-class TestViewController: UIViewController {
+class TestViewController: BaseViewController {
     var viewModel: TestViewModel!
-    var factory: ViewControllerFactory!
 
     // MARK: - Outlets
 
@@ -25,29 +24,14 @@ class TestViewController: UIViewController {
 
     private var models: [Test.Frequency] = []
 
-    // MARK: - Functional Reactive [Combine]
-
-    private var cancellables: Set<AnyCancellable> = []
-    @Published var headphonesConnected = CurrentValueSubject<Bool, Never>(true)
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleRouteChange),
-                                               name: AVAudioSession.routeChangeNotification,
-                                               object: AVAudioSession.sharedInstance())
 
         let cell = UINib(nibName: FrequencyTableViewCell.nibIdentifier, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: FrequencyTableViewCell.cellReuseIdentifier)
         tableView.rowHeight = rowHeight
         tableView.dataSource = dataSource
         snapshot.appendSections([.frequency])
-
-        headphonesConnected.sink { connected in
-            if !connected { self.navigateToHeadphoneDisconnected() }
-        }
-        .store(in: &cancellables)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -91,21 +75,6 @@ class TestViewController: UIViewController {
         updateHearingStatus(for: sender.tag)
     }
 
-    @objc func handleRouteChange(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
-              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else {
-            return
-        }
-
-        switch reason {
-        case .oldDeviceUnavailable: /// The old device became unavailable (e.g. headphones have been unplugged).
-            headphonesConnected.send(false)
-
-        default: ()
-        }
-    }
-
     private func updatePlayingStatus(for tag: Int) {
         let models = snapshot.itemIdentifiers
 
@@ -133,36 +102,11 @@ class TestViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
         viewModel.updatedModels.send(models)
     }
-
-    func checkIfHeadphoneConnected() {
-        let outputs = AVAudioSession.sharedInstance().currentRoute.outputs
-
-        var connected = false
-        for output in outputs {
-            if output.isHeadphone {
-                connected = true
-                break
-            }
-        }
-
-        headphonesConnected.send(connected)
-    }
 }
 
 // MARK: - Navigation
 
 extension TestViewController {
-    func navigateToHeadphoneDisconnected() {
-        let destination = factory.status
-
-        if let sheet = destination.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.preferredCornerRadius = 20
-            sheet.prefersGrabberVisible = true
-        }
-        present(destination, animated: true)
-    }
-
     func navigateToResult(withResult result: Test.Result) {
         let destination = factory.result
         destination.result.send(result)

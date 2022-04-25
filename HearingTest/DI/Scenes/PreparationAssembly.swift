@@ -15,7 +15,7 @@ class PreparationAssembly: Assembly {
             let factory = resolver.resolve(ViewControllerFactory.self)!
 
             view.factory = factory
-            
+
             return view
         }
     }
