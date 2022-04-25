@@ -5,11 +5,13 @@
 //  Created by Mehmet Tarhan on 23/04/2022.
 //
 
+import AVFoundation
 import Combine
 import UIKit
 
 class TestViewController: UIViewController {
     var viewModel: TestViewModel!
+    var factory: ViewControllerFactory!
 
     // MARK: - Outlets
 
@@ -20,13 +22,12 @@ class TestViewController: UIViewController {
     private var snapshot = NSDiffableDataSourceSnapshot<FrequencySection, Test.Frequency>()
     private lazy var dataSource = generatedDataSource
 
-    private let models = [Test.Frequency(title: "Frequency 1", file: Test.Frequency.File(name: "50Hz", ext: "wav"), heard: false, playing: false, tag: 0),
-                          Test.Frequency(title: "Frequency 2", file: Test.Frequency.File(name: "125Hz", ext: "wav"), heard: false, playing: false, tag: 1),
-                          Test.Frequency(title: "Frequency 3", file: Test.Frequency.File(name: "250Hz", ext: "wav"), heard: false, playing: false, tag: 2),
-                          Test.Frequency(title: "Frequency 4", file: Test.Frequency.File(name: "500Hz", ext: "wav"), heard: false, playing: false, tag: 3)]
+    private var models: [Test.Frequency] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupNotifications()
 
         let cell = UINib(nibName: FrequencyTableViewCell.nibIdentifier, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: FrequencyTableViewCell.cellReuseIdentifier)
@@ -38,41 +39,46 @@ class TestViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        models = viewModel.models
+
         snapshot.appendItems(models, toSection: .frequency)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleRouteChange),
+                                               name: AVAudioSession.routeChangeNotification,
+                                               object: AVAudioSession.sharedInstance())
+    }
+
+    // MARK: - Actions
+
     @IBAction func didTapContinue(_ sender: UIButton) {
+        navigateToHeadphoneDisconnected()
     }
 
     @objc func didTapPlay(_ sender: UIButton) {
-        let models = snapshot.itemIdentifiers
-
-        var playingIndex: Int?
-
-        if let index = models.firstIndex(where: { $0.tag == sender.tag }) {
-            playingIndex = index
-        }
-
-        if playingIndex == sender.tag {
-            models[sender.tag].playing = !models[sender.tag].playing
-
-        } else {
-            if let index = playingIndex {
-                models[index].playing = false
-            }
-            models[sender.tag].playing = true
-        }
-
-        snapshot.reconfigureItems(models)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        updatePlayingStatus(for: sender.tag)
     }
 
     @objc func didTapHear(_ sender: UIButton) {
-        let models = snapshot.itemIdentifiers
-        models[sender.tag].heard.toggle()
-        snapshot.reconfigureItems(models)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        updateHearingStatus(for: sender.tag)
+    }
+
+    @objc func handleRouteChange(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else {
+            return
+        }
+
+        switch reason {
+        case .oldDeviceUnavailable: /// The old device became unavailable (e.g. headphones have been unplugged).
+            navigateToHeadphoneDisconnected()
+
+        default: ()
+        }
     }
 
     private var generatedDataSource: FrequencyTableViewDiffableDataSource {
@@ -93,6 +99,51 @@ class TestViewController: UIViewController {
 
             return cell
         }
+    }
+
+    private func updatePlayingStatus(for tag: Int) {
+        let models = snapshot.itemIdentifiers
+
+        var playingIndex: Int?
+
+        if let index = models.firstIndex(where: { $0.playing }) {
+            playingIndex = index
+        }
+
+        if playingIndex == tag {
+            models[tag].playing = !models[tag].playing
+
+        } else {
+            if let index = playingIndex {
+                models[index].playing = false
+            }
+            models[tag].playing = true
+        }
+
+        snapshot.reconfigureItems(models)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    private func updateHearingStatus(for tag: Int) {
+        let models = snapshot.itemIdentifiers
+        models[tag].heard.toggle()
+        snapshot.reconfigureItems(models)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+// MARK: - Navigation
+
+extension TestViewController {
+    func navigateToHeadphoneDisconnected() {
+        let detailViewController = factory.status
+
+        if let sheet = detailViewController.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
+        }
+        present(detailViewController, animated: true, completion: nil)
     }
 }
 

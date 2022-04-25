@@ -13,9 +13,11 @@ class TestAssembly: Assembly {
         container.register(TestViewController.self) { resolver in
             let view = TestViewController(nibName: "TestViewController", bundle: nil)
             let viewModel = resolver.resolve(TestViewModel.self)!
+            let factory = resolver.resolve(ViewControllerFactory.self)!
 
             view.viewModel = viewModel
-            
+            view.factory = factory
+
             return view
         }
 

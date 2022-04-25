@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PreparationAssembly(),
             ResultAssembly(),
             SplashAssembly(),
+            StatusAssembly(),
             TestAssembly(),
 
         ])

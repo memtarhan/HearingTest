@@ -19,6 +19,9 @@
 		436E539C2815FEB30070FD66 /* 500Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 436E53982815FEB30070FD66 /* 500Hz.wav */; };
 		436E539D2815FEB30070FD66 /* 125Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 436E53992815FEB30070FD66 /* 125Hz.wav */; };
 		436E539F2815FF9E0070FD66 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E539E2815FF9E0070FD66 /* UIView+.swift */; };
+		436E53A328161BB30070FD66 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E53A128161BB30070FD66 /* StatusViewController.swift */; };
+		436E53A428161BB30070FD66 /* StatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436E53A228161BB30070FD66 /* StatusViewController.xib */; };
+		436E53A628161BCD0070FD66 /* StatusAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436E53A528161BCD0070FD66 /* StatusAssembly.swift */; };
 		43E4B40F2814A9F800360950 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 43E4B40E2814A9F800360950 /* Swinject */; };
 		43E4B4172814AACD00360950 /* ResultAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4162814AACD00360950 /* ResultAssembly.swift */; };
 		43E4B41A2814AAF800360950 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E4B4182814AAF800360950 /* ResultViewController.swift */; };
@@ -75,6 +78,9 @@
 		436E53982815FEB30070FD66 /* 500Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 500Hz.wav; sourceTree = "<group>"; };
 		436E53992815FEB30070FD66 /* 125Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 125Hz.wav; sourceTree = "<group>"; };
 		436E539E2815FF9E0070FD66 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		436E53A128161BB30070FD66 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		436E53A228161BB30070FD66 /* StatusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusViewController.xib; sourceTree = "<group>"; };
+		436E53A528161BCD0070FD66 /* StatusAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAssembly.swift; sourceTree = "<group>"; };
 		43E4B4162814AACD00360950 /* ResultAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAssembly.swift; sourceTree = "<group>"; };
 		43E4B4182814AAF800360950 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		43E4B4192814AAF800360950 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -186,6 +192,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		436E53A028161B9F0070FD66 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				436E53A128161BB30070FD66 /* StatusViewController.swift */,
+				436E53A228161BB30070FD66 /* StatusViewController.xib */,
+			);
+			path = Status;
+			sourceTree = "<group>";
+		};
 		43E4B4102814AA1800360950 /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +216,7 @@
 				43E4B4122814AA2900360950 /* Preparation */,
 				43E4B4142814AA4900360950 /* Result */,
 				43E4B4362814B76600360950 /* Splash */,
+				436E53A028161B9F0070FD66 /* Status */,
 				43E4B4132814AA4000360950 /* Test */,
 			);
 			path = Scenes;
@@ -242,6 +258,7 @@
 				43E4B4302814AE9200360950 /* PreparationAssembly.swift */,
 				43E4B4162814AACD00360950 /* ResultAssembly.swift */,
 				43E4B43B2814B84700360950 /* SplashAssembly.swift */,
+				436E53A528161BCD0070FD66 /* StatusAssembly.swift */,
 				43E4B42A2814AD8B00360950 /* TestAssembly.swift */,
 			);
 			path = Scenes;
@@ -393,6 +410,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436E53A428161BB30070FD66 /* StatusViewController.xib in Resources */,
 				43E4B42F2814AE7A00360950 /* PreparationViewController.xib in Resources */,
 				43E4B4412814D88100360950 /* FrequencyTableViewCell.xib in Resources */,
 				436E539D2815FEB30070FD66 /* 125Hz.wav in Resources */,
@@ -440,10 +458,12 @@
 				436E539F2815FF9E0070FD66 /* UIView+.swift in Sources */,
 				43E4B4172814AACD00360950 /* ResultAssembly.swift in Sources */,
 				43E4B4312814AE9200360950 /* PreparationAssembly.swift in Sources */,
+				436E53A628161BCD0070FD66 /* StatusAssembly.swift in Sources */,
 				43E4B42B2814AD8B00360950 /* TestAssembly.swift in Sources */,
 				43E4B4402814D88100360950 /* FrequencyTableViewCell.swift in Sources */,
 				434F84212814A98300658027 /* SceneDelegate.swift in Sources */,
 				43E4B43C2814B84700360950 /* SplashAssembly.swift in Sources */,
+				436E53A328161BB30070FD66 /* StatusViewController.swift in Sources */,
 				43E4B4352814B53400360950 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
