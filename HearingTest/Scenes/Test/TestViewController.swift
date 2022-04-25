@@ -24,6 +24,26 @@ class TestViewController: UIViewController {
 
     private var models: [Test.Frequency] = []
 
+    private var generatedDataSource: FrequencyTableViewDiffableDataSource {
+        FrequencyTableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell? in
+
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.cellReuseIdentifier, for: indexPath) as? FrequencyTableViewCell
+            else { return UITableViewCell() }
+
+            cell.configure(model)
+
+            cell.playPauseButton.tag = model.tag
+            cell.playPauseButton.addTarget(self, action: #selector(self.didTapPlay(_:)), for: .touchUpInside)
+
+            cell.hearButton.tag = model.tag
+            cell.hearButton.addTarget(self, action: #selector(self.didTapHear(_:)), for: .touchUpInside)
+
+            cell.delegate = self
+
+            return cell
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,6 +63,8 @@ class TestViewController: UIViewController {
 
         snapshot.appendItems(models, toSection: .frequency)
         dataSource.apply(snapshot, animatingDifferences: true)
+
+        checkIfHeadphoneConnected()
     }
 
     func setupNotifications() {
@@ -81,26 +103,6 @@ class TestViewController: UIViewController {
         }
     }
 
-    private var generatedDataSource: FrequencyTableViewDiffableDataSource {
-        FrequencyTableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell? in
-
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.cellReuseIdentifier, for: indexPath) as? FrequencyTableViewCell
-            else { return UITableViewCell() }
-
-            cell.configure(model)
-
-            cell.playPauseButton.tag = model.tag
-            cell.playPauseButton.addTarget(self, action: #selector(self.didTapPlay(_:)), for: .touchUpInside)
-
-            cell.hearButton.tag = model.tag
-            cell.hearButton.addTarget(self, action: #selector(self.didTapHear(_:)), for: .touchUpInside)
-
-            cell.delegate = self
-
-            return cell
-        }
-    }
-
     private func updatePlayingStatus(for tag: Int) {
         let models = snapshot.itemIdentifiers
 
@@ -129,6 +131,16 @@ class TestViewController: UIViewController {
         models[tag].heard.toggle()
         snapshot.reconfigureItems(models)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    func checkIfHeadphoneConnected() {
+        let outputs = AVAudioSession.sharedInstance().currentRoute.outputs
+
+        for output in outputs {
+            if output.portType != AVAudioSession.Port.headphones {
+                navigateToHeadphoneDisconnected()
+            }
+        }
     }
 }
 
