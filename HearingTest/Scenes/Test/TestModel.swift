@@ -34,6 +34,33 @@ struct Test {
 
         static let sample = Test.Frequency(title: "Sample", file: Test.Frequency.File(name: "", ext: ""), heard: false, playing: false, tag: -1)
     }
+
+    enum Result: String, CaseIterable {
+        /**
+         If all frequencies were heard
+         */
+        case excellent
+        /**
+         If only some frequencies were heard
+         */
+        case limited
+        /**
+         If no frequency was heard
+         */
+        case impaired
+
+        // TODO: This part could be customized for a better UX
+        var message: String {
+            switch self {
+            case .excellent:
+                return "Your hearing is\nexcellent!"
+            case .limited:
+                return "Your hearing is\nlimited!"
+            case .impaired:
+                return "Your hearing is\nimpaired!"
+            }
+        }
+    }
 }
 
 /// - to confirm UITableViewDiffableDataSource

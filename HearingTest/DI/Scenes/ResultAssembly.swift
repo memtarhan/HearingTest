@@ -10,9 +10,12 @@ import UIKit
 
 class ResultAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(ResultViewController.self) { _ in
+        container.register(ResultViewController.self) { resolver in
             let view = ResultViewController(nibName: "ResultViewController", bundle: nil)
+            let factory = resolver.resolve(ViewControllerFactory.self)!
 
+            view.factory = factory
+            
             return view
         }
     }

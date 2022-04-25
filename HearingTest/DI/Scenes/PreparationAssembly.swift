@@ -10,9 +10,12 @@ import UIKit
 
 class PreparationAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(PreparationViewController.self) { _ in
+        container.register(PreparationViewController.self) { resolver in
             let view = PreparationViewController(nibName: "PreparationViewController", bundle: nil)
+            let factory = resolver.resolve(ViewControllerFactory.self)!
 
+            view.factory = factory
+            
             return view
         }
     }

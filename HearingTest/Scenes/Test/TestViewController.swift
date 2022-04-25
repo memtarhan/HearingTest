@@ -25,38 +25,29 @@ class TestViewController: UIViewController {
 
     private var models: [Test.Frequency] = []
 
-    private var generatedDataSource: FrequencyTableViewDiffableDataSource {
-        FrequencyTableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell? in
-
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.cellReuseIdentifier, for: indexPath) as? FrequencyTableViewCell
-            else { return UITableViewCell() }
-
-            cell.configure(model)
-
-            cell.playPauseButton.tag = model.tag
-            cell.playPauseButton.addTarget(self, action: #selector(self.didTapPlay(_:)), for: .touchUpInside)
-
-            cell.hearButton.tag = model.tag
-            cell.hearButton.addTarget(self, action: #selector(self.didTapHear(_:)), for: .touchUpInside)
-
-            cell.delegate = self
-
-            return cell
-        }
-    }
+    // MARK: - Functional Reactive [Combine]
 
     private var cancellables: Set<AnyCancellable> = []
+    @Published var headphonesConnected = CurrentValueSubject<Bool, Never>(true)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNotifications()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleRouteChange),
+                                               name: AVAudioSession.routeChangeNotification,
+                                               object: AVAudioSession.sharedInstance())
 
         let cell = UINib(nibName: FrequencyTableViewCell.nibIdentifier, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: FrequencyTableViewCell.cellReuseIdentifier)
         tableView.rowHeight = rowHeight
         tableView.dataSource = dataSource
         snapshot.appendSections([.frequency])
+
+        headphonesConnected.sink { connected in
+            if !connected { self.navigateToHeadphoneDisconnected() }
+        }
+        .store(in: &cancellables)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -71,25 +62,25 @@ class TestViewController: UIViewController {
             }
         }
         .store(in: &cancellables)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
 
         checkIfHeadphoneConnected()
     }
 
-    func setupNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleRouteChange),
-                                               name: AVAudioSession.routeChangeNotification,
-                                               object: AVAudioSession.sharedInstance())
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        let models = snapshot.itemIdentifiers
+        models.forEach { $0.playing = false }
+        snapshot.reconfigureItems(models)
+        dataSource.apply(snapshot, animatingDifferences: true)
+        viewModel.updatedModels.send(models)
     }
 
     // MARK: - Actions
 
     @IBAction func didTapContinue(_ sender: UIButton) {
-        navigateToHeadphoneDisconnected()
+        let result = viewModel.result.value
+        navigateToResult(withResult: result)
     }
 
     @objc func didTapPlay(_ sender: UIButton) {
@@ -109,7 +100,7 @@ class TestViewController: UIViewController {
 
         switch reason {
         case .oldDeviceUnavailable: /// The old device became unavailable (e.g. headphones have been unplugged).
-            navigateToHeadphoneDisconnected()
+            headphonesConnected.send(false)
 
         default: ()
         }
@@ -132,6 +123,7 @@ class TestViewController: UIViewController {
 
         snapshot.reconfigureItems(models)
         dataSource.apply(snapshot, animatingDifferences: true)
+        viewModel.updatedModels.send(models)
     }
 
     private func updateHearingStatus(for tag: Int) {
@@ -139,27 +131,21 @@ class TestViewController: UIViewController {
         models[tag].heard.toggle()
         snapshot.reconfigureItems(models)
         dataSource.apply(snapshot, animatingDifferences: true)
+        viewModel.updatedModels.send(models)
     }
 
     func checkIfHeadphoneConnected() {
-        if !bluetoothOrHeadphonesConnected {
-            navigateToHeadphoneDisconnected()
-        }
-    }
-
-    var bluetoothOrHeadphonesConnected: Bool {
         let outputs = AVAudioSession.sharedInstance().currentRoute.outputs
 
+        var connected = false
         for output in outputs {
-            if output.portType == AVAudioSession.Port.bluetoothA2DP ||
-                output.portType == AVAudioSession.Port.bluetoothHFP ||
-                output.portType == AVAudioSession.Port.bluetoothLE ||
-                output.portType == AVAudioSession.Port.headphones {
-                return true
+            if output.isHeadphone {
+                connected = true
+                break
             }
         }
 
-        return false
+        headphonesConnected.send(connected)
     }
 }
 
@@ -167,14 +153,24 @@ class TestViewController: UIViewController {
 
 extension TestViewController {
     func navigateToHeadphoneDisconnected() {
-        let detailViewController = factory.status
+        let destination = factory.status
 
-        if let sheet = detailViewController.sheetPresentationController {
+        if let sheet = destination.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true
         }
-        present(detailViewController, animated: true, completion: nil)
+        present(destination, animated: true)
+    }
+
+    func navigateToResult(withResult result: Test.Result) {
+        let destination = factory.result
+        destination.result.send(result)
+
+        destination.modalTransitionStyle = .crossDissolve
+        destination.modalPresentationStyle = .fullScreen
+
+        present(destination, animated: true)
     }
 }
 
@@ -186,5 +182,29 @@ extension TestViewController: FrequencyTableViewCellDelegate {
         models[model.tag].playing = false
         snapshot.reconfigureItems(models)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+// MARK: - TableView & DataSource
+
+extension TestViewController {
+    private var generatedDataSource: FrequencyTableViewDiffableDataSource {
+        FrequencyTableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell? in
+
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.cellReuseIdentifier, for: indexPath) as? FrequencyTableViewCell
+            else { return UITableViewCell() }
+
+            cell.configure(model)
+
+            cell.playPauseButton.tag = model.tag
+            cell.playPauseButton.addTarget(self, action: #selector(self.didTapPlay(_:)), for: .touchUpInside)
+
+            cell.hearButton.tag = model.tag
+            cell.hearButton.addTarget(self, action: #selector(self.didTapHear(_:)), for: .touchUpInside)
+
+            cell.delegate = self
+
+            return cell
+        }
     }
 }

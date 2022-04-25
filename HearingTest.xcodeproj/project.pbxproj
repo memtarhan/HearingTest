@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430D73B12816FE30003B363A /* AVAudioSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430D73B02816FE30003B363A /* AVAudioSession+.swift */; };
 		434F841F2814A98300658027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F841E2814A98300658027 /* AppDelegate.swift */; };
 		434F84212814A98300658027 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434F84202814A98300658027 /* SceneDelegate.swift */; };
 		434F84282814A98800658027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434F84272814A98800658027 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430D73B02816FE30003B363A /* AVAudioSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+.swift"; sourceTree = "<group>"; };
 		434F841B2814A98300658027 /* HearingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434F841E2814A98300658027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434F84202814A98300658027 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		43E4B41C2814AB5E00360950 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				430D73B02816FE30003B363A /* AVAudioSession+.swift */,
 				43E4B4342814B53400360950 /* UIColor+.swift */,
 				436E539E2815FF9E0070FD66 /* UIView+.swift */,
 				43E4B41D2814AB6F00360950 /* ViewControllerFactory.swift */,
@@ -462,6 +465,7 @@
 				43E4B42B2814AD8B00360950 /* TestAssembly.swift in Sources */,
 				43E4B4402814D88100360950 /* FrequencyTableViewCell.swift in Sources */,
 				434F84212814A98300658027 /* SceneDelegate.swift in Sources */,
+				430D73B12816FE30003B363A /* AVAudioSession+.swift in Sources */,
 				43E4B43C2814B84700360950 /* SplashAssembly.swift in Sources */,
 				436E53A328161BB30070FD66 /* StatusViewController.swift in Sources */,
 				43E4B4352814B53400360950 /* UIColor+.swift in Sources */,

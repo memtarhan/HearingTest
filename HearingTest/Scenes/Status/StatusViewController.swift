@@ -6,27 +6,32 @@
 //
 
 import AVFoundation
+import Combine
 import UIKit
 
 class StatusViewController: UIViewController {
     @IBOutlet var imageContainerView: UIView!
 
+    private var cancellables: Set<AnyCancellable> = []
+    @Published var headphonesConnected = CurrentValueSubject<Bool, Never>(false)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNotifications()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleRouteChange),
+                                               name: AVAudioSession.routeChangeNotification,
+                                               object: AVAudioSession.sharedInstance())
 
         imageContainerView.makeCircle()
         imageContainerView.addBorder()
 
         isModalInPresentation = true
-    }
 
-    func setupNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleRouteChange),
-                                               name: AVAudioSession.routeChangeNotification,
-                                               object: AVAudioSession.sharedInstance())
+        headphonesConnected.sink { connected in
+            if connected { self.dismiss(animated: true) }
+        }
+        .store(in: &cancellables)
     }
 
     @objc func handleRouteChange(notification: Notification) {
@@ -38,9 +43,7 @@ class StatusViewController: UIViewController {
 
         switch reason {
         case .newDeviceAvailable: /// A new device became available (e.g. headphones have been plugged in).
-            DispatchQueue.main.async {
-                self.dismiss(animated: true)
-            }
+            headphonesConnected.send(true)
 
         default: ()
         }

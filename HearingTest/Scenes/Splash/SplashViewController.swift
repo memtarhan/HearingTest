@@ -24,14 +24,16 @@ class SplashViewController: UIViewController {
             self.logoImageView.alpha = 0.0
 
         } completion: { _ in
-            self.navigateToTest()
+            self.navigateToPreparation()
         }
     }
+}
 
-    // MARK: - Navigation
+// MARK: - Navigation
 
-    func navigateToTest() {
-        let destination = factory.test
+extension SplashViewController {
+    func navigateToPreparation() {
+        let destination = factory.preparation
         destination.modalTransitionStyle = .crossDissolve
         destination.modalPresentationStyle = .fullScreen
         present(destination, animated: true)
